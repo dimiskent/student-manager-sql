@@ -5,11 +5,6 @@ public class StudentManager {
     private final Connection connection;
     private final Scanner scanner;
     public final boolean isReady;
-    //  TODO:
-    //    List all students
-    //    Find student by ID
-    //    Update student email
-    //    Delete student
     public StudentManager(String url, String user, String password) {
         Connection testConnection;
         try {
@@ -25,7 +20,7 @@ public class StudentManager {
     public void close() {
         scanner.close();
         try {
-            if(connection != null && connection.isClosed()) connection.close();
+            if(connection != null && !connection.isClosed()) connection.close();
         } catch (SQLException e) {
             System.out.println("Cannot close connection? " + e.getMessage());
         }
